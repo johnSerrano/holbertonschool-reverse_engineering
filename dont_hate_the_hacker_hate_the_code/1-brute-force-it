@@ -1,0 +1,19 @@
+#!/bin/bash
+
+cp a.out a.out.old
+
+RESULT=' '
+
+for i in `strings a.out.old`
+do
+	cp a.out.old a.out
+	chmod +x a.out
+	RESULT=`./a.out $i`
+	if [[ $RESULT == "Access granted \o/" ]]
+	then
+		echo $i
+		exit 0
+	fi
+done
+
+
