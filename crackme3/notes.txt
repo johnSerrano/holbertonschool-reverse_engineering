@@ -1,0 +1,35 @@
+password must be 4 characters
+
+/* if we looped four times and never broke than we are in */
+
+@PARAM str;
+
+int32 a = 71516737
+int32 b = 0xff
+int32 c = 0
+
+checks strlen is 4
+
+loop {
+	if c (unsigned) > 3 return 1;
+	
+	/* math happens */	
+	str_copy = str;
+	str_copy += c
+
+	/* iterating over string */
+
+	char_to_check = (int) *(str_copy)
+
+	edx = 0xff & a >> ((c << 3) & 0xf)
+
+	if (char_to_check != edx) return 0;
+
+	c++;
+}
+
+for (int i = 0; i < 4; i++) {
+	char expect = (int) (a >> ((i << 3) & 0xff));
+	if (*(str + i) != expect) return 0;
+}
+return 1;
